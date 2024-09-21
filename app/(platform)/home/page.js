@@ -102,6 +102,8 @@ export default function HomePage() {
     const [username, setUsername] = useState("");
 
     const searchParams = useSearchParams();
+
+   
   
     const handleLink = (topic, category) => {
       let categoryString = " - " +category
@@ -134,6 +136,12 @@ export default function HomePage() {
 
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+
+  const onEnter = (e) => {
+    if (e.key === 'Enter') {
+      handleLink(searchQuery,"Basics")
+    }
+}
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-950 text-gray-100">
@@ -169,6 +177,7 @@ export default function HomePage() {
                 placeholder="Search health topics..."
                 className="w-full pl-10 pr-4 py-2 bg-gray-800 border-gray-700 text-gray-100 focus:ring-green-500 focus:border-green-500"
                 value={searchQuery}
+                onKeyDown = {onEnter}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />

@@ -20,11 +20,18 @@ import {
   Rocket,
 } from "lucide-react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 const Navbar = () => {
+  const router = useRouter()
   const [score, setScore] = useState(0)
   const [streak, setStreak] = useState(0)
   const [isSyncing, setIsSyncing] = useState(false)
+
+  const handleAvatarClick = () => {
+    localStorage.setItem("username", "");
+    router.push("/");
+  }
 
   useEffect(() => {
     // Simulating initial data fetch
@@ -82,7 +89,7 @@ const Navbar = () => {
           <Rocket className="h-5 w-5 mr-2" />
           Daily Quest
         </Button>
-        <Button variant="ghost" className="text-gray-300 hover:text-gray-100">
+        <Button variant="ghost" className="text-gray-300 hover:text-gray-100" onClick={handleAvatarClick}>
           <User className="h-5 w-5" />
         </Button>
       </nav>
