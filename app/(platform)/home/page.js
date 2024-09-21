@@ -25,22 +25,7 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-950 text-gray-100">
-      {/* <header className="px-4 lg:px-6 h-14 flex items-center justify-between border-b border-gray-800">
-        <Link className="flex items-center justify-center" href="/home">
-          <HeartPulse className="h-6 w-6 text-green-500" />
-          <span className="ml-2 text-2xl font-bold text-green-500">Meducate</span>
-        </Link>
-        <nav className="flex items-center gap-4 sm:gap-6">
-          <Button variant="ghost" className="text-gray-300 hover:text-gray-100">
-            <Activity className="h-5 w-5 mr-2" />
-            Daily Quest
-          </Button>
-          <Button variant="ghost" className="text-gray-300 hover:text-gray-100">
-            <User className="h-5 w-5" />
-          </Button>
-        </nav>
-      </header> */}
-      <Navbar></Navbar>
+      
       <main className="flex-1 overflow-y-auto p-4 md:p-6">
         <div className="max-w-4xl mx-auto space-y-8">
           <section className="text-center">
