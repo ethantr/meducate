@@ -1,15 +1,19 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
+import { useParams,useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { ChevronRight, ChevronLeft, HeartPulse } from "lucide-react";
 import confetti from "canvas-confetti";
+import Link from "next/link";
 
 export default function TopicPage() {
   const { id } = useParams();
+  const searchParams = useSearchParams();
+  const topic = searchParams.get("topic");
+  console.log(topic)
   const [topicData, setTopicData] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -20,26 +24,22 @@ export default function TopicPage() {
   const [progress, setProgress] = useState(0);
 
   const dummy_data = {
-    title: "Understanding Balanced Diet",
+    // title: "Understanding Balanced Diet",
     slides: [
       {
         content:
           "A balanced diet includes a variety of foods from all food groups.",
-        image: "/placeholder.svg",
       },
       {
         content:
           "Aim for a colorful plate to ensure you're getting a range of nutrients.",
-        image: "/placeholder.svg",
       },
       {
         content: "Portion control is key to maintaining a healthy diet.",
-        image: "/placeholder.svg",
       },
       {
         content:
           "Stay hydrated! Water is an essential part of a balanced diet.",
-        image: "/placeholder.svg",
       },
     ],
     questions: [
@@ -208,7 +208,7 @@ export default function TopicPage() {
     const fetchQuizData = async () => {
       setIsLoading(true);
       try {
-        // const data = await callAnthropicAPI();
+        // const data = await callAnthropicAPI(topic);
         // const jsonData = extractJson(data.message);
         // setTopicData(jsonData);
         setTopicData(dummy_data);
@@ -224,7 +224,7 @@ export default function TopicPage() {
   }, []);
 
   // Simulate call to the external API
-  const callAnthropicAPI = async () => {
+  const callAnthropicAPI = async (topic) => {
     const userCharacteristics = {
       age: 16,
       gender: "male",
@@ -232,7 +232,6 @@ export default function TopicPage() {
       proficiency: "Basic English",
       location: "France",
     };
-    const topic = "diabetes";
 
     const response = await fetch("/api/anthropic", {
       method: "POST",
@@ -365,7 +364,7 @@ slides:[
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-950 text-gray-100">
-      <Header title={topicData.title} />
+      <Header title={topicData.title || topic} />
       <main className="flex-1 overflow-hidden">
         <div className="max-w-4xl mx-auto p-4 md:p-6 h-full flex flex-col">
           {isQuizMode ? (
@@ -394,10 +393,10 @@ slides:[
 // Reusable components
 const Header = ({ title }) => (
   <header className="px-4 lg:px-6 h-14 flex items-center justify-between border-b border-gray-800">
-    <div className="flex items-center">
+    <Link href = "/home" className="flex items-center">
       <HeartPulse className="h-6 w-6 text-green-500" />
       <span className="ml-2 text-2xl font-bold text-green-500">Meducate</span>
-    </div>
+    </Link>
     <h1 className="text-xl font-bold">{title}</h1>
   </header>
 );

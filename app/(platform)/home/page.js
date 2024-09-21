@@ -77,6 +77,11 @@ export default function HomePage() {
     const [username, setUsername] = useState("");
 
     const searchParams = useSearchParams();
+  
+    const handleLink = (topic) => {
+      // Navigate to the new page with a query parameter
+      router.push(`/topic?topic=${encodeURIComponent(topic)}`)
+    };
     
     useEffect(() => {
         // Check if the username is in the search parameters
@@ -179,6 +184,7 @@ export default function HomePage() {
                         <Button
                           key={topicIndex}
                           variant="secondary"
+                          onClick={() => handleLink(topic)}
                           className="w-full text-left justify-start py-2 px-3 bg-gray-800 hover:bg-gray-300 text-green-50 hover:text-green-950"
                         >
                           <category.icon
