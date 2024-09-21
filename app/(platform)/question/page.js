@@ -1,6 +1,7 @@
-"use client"
-import { useState } from "react";
+"use client";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const questions = [
   {
@@ -46,20 +47,26 @@ export default function MultipleChoiceCard() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // Get the username from the query parameter
+  const username = searchParams.get("username");
 
   const handleAnswer = (answer) => {
-    setUserAnswer(prev => {
-      const curAns = {...prev};
-      curAns[questions[currentQuestion].key] = answer; 
-      if (currentQuestion == questions.length - 1) {
-        //TODO post user info
-        console.log(curAns);
+    setUserAnswer((prev) => {
+      const curAns = { ...prev };
+      curAns[questions[currentQuestion].key] = answer;
+      if (currentQuestion === questions.length - 1) {
+        // After the last question, redirect to /home with the username
+        setTimeout(() => {
+          router.push(`/home?username=${encodeURIComponent(username)}`);
+        }, 500); // Added delay to ensure router is available
         return curAns;
       }
-      console.log(currentQuestion);
-      setCurrentQuestion(prev => prev + 1);
+      setCurrentQuestion((prev) => prev + 1);
       return curAns;
-    })
+    });
   };
 
   return (

@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -28,7 +27,8 @@ export default function LoginPage() {
     const isSuccess = true; // Replace this with actual authentication logic
 
     if (isSuccess) {
-      router.push(`/home?username=${encodeURIComponent(username)}`);
+      // router.push(`/home?username=${encodeURIComponent(username)}`);
+      router.push(`/question?username=${encodeURIComponent(username)}`);
     } else {
       alert("Login failed. Please check your credentials.");
     }
