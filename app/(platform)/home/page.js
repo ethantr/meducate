@@ -159,7 +159,7 @@ export default function HomePage() {
           <section className="bg-gray-900 rounded-lg p-4 flex items-center justify-between">
             <div>
               <h2 className="text-xl font-semibold mb-1">Your Progress</h2>
-              <p className="text-gray-400">Keep going! You're doing great!</p>
+              <p className="text-gray-400">Keep going! You&apos;re doing great!</p>
             </div>
             <div className="w-1/3">
             <div className="text-gray-400">60 until next level</div>
