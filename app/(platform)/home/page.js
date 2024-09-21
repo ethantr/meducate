@@ -179,12 +179,12 @@ export default function HomePage() {
                         <Button
                           key={topicIndex}
                           variant="secondary"
-                          className="w-full text-left justify-start py-2 px-3 bg-gray-800 hover:bg-gray-300"
+                          className="w-full text-left justify-start py-2 px-3 bg-gray-800 hover:bg-gray-300 text-green-50 hover:text-green-950"
                         >
                           <category.icon
                             className={`h-4 w-4 mr-2 ${category.color}`}
                           />
-                          {topic}
+                         {topic}
                         </Button>
                       ))}
                     </div>
@@ -196,9 +196,6 @@ export default function HomePage() {
           </section>
         </div>
       </main>
-      <footer className="py-4 text-center text-sm text-gray-400 border-t border-gray-800">
-        © 2023 Meducate. Keep learning, stay healthy!
-      </footer>
     </div>
   );
 }
