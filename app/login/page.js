@@ -10,6 +10,8 @@ import { useRouter } from "next/navigation"; // Ensure correct import
 
 export default function LoginPage() {
   const router = useRouter();
+  
+  
   const [showPassword, setShowPassword] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -26,7 +28,7 @@ export default function LoginPage() {
     const isSuccess = true; // Replace this with actual authentication logic
 
     if (isSuccess) {
-      router.push(`/platform/home?username=${encodeURIComponent(username)}`);
+      router.push(`/home?username=${encodeURIComponent(username)}`);
     } else {
       alert("Login failed. Please check your credentials.");
     }
