@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { Heart, Award, BookOpen, Settings } from 'lucide-react'
-import data from '../dummy_data/dummyData'
+import data from '../../dummy_data/dummyData'
 export default function Page() {
 
   const [selectedAnswer, setSelectedAnswer] = useState(null)
