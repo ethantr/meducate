@@ -109,7 +109,7 @@ export default function LandingPage() {
                   Testimonial
                 </div>
                 <blockquote className="text-lg font-semibold">
-                  "Meducate has transformed the way I understand my health. It's like having a friendly doctor in my pocket!"
+                &quot;Meducate has transformed the way I understand my health. It&apos;s like having a friendly doctor in my pocket!&quot;
                 </blockquote>
                 <p className="text-gray-400">- Sarah J., Meducate User</p>
               </div>
