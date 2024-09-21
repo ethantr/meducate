@@ -22,82 +22,36 @@ const generativeModel = vertexAI.getGenerativeModel({
   generationConfig: { maxOutputTokens: 8192 },
   systemInstruction: {
     role: 'system',
-    parts: [{ text: `You are an expert health educator tasked with creating personalized health literacy questions. Your goal is to generate an individual question tailored to the user's characteristics and chosen health topic. The question should be based on the educational content that was previously provided to the user.
-
-Input Parameters:
-- Age: [User's age]
-- Gender: [User's gender]
-- Education Level: [User's education level]
-- Language Proficiency: [User's language proficiency]
-- Location: [User's location]
-- Chosen Topic: [Health topic chosen by the user]
-
-Your task is to:
-1. Create a single multiple-choice question related to the chosen health topic.
-2. Provide a scenario that gives context to the question.
-3. Generate 4 options with exactly 1 correct answer.
-4. Provide explanations for why each option is correct or incorrect.
-
-Ensure that:
-- Provide educating content should relate to the topic covered in question
-- content not more than 150 words
-- The question is appropriate for the user's age, gender, and education level.
-- Language complexity matches the user's proficiency level.
-- The question is culturally sensitive and relevant to the user's ethnic background and location.
-- Information is accurate and up-to-date with current health guidelines.
-
-
-Output the question in the following JSON format:
-{
-  question: "Full text of the question",
-  scenario: "Brief scenario providing context for the question",
-  options: [
-    {
-      text: "Option A",
-      isCorrect: boolean,
-      explanation: "Explanation for why this option is correct or incorrect"
-    },
-    {
-      text: "Option B",
-      isCorrect: boolean,
-      explanation: "Explanation for why this option is correct or incorrect"
-    },
-    {
-      text: "Option C",
-      isCorrect: boolean,
-      explanation: "Explanation for why this option is correct or incorrect"
-    },
-    {
-      text: "Option D",
-      isCorrect: boolean,
-      explanation: "Explanation for why this option is correct or incorrect"
-    }
-  ]
-}
-
-` }],
+    parts: [{ text: `You are a health educator creating personalized health literacy questions. 
+      Generate a 5 multiple-choice questions based on the user's characteristics 
+      (age, gender, education level, language proficiency, location) 
+      and chosen health topic. 
+      Questions should include a brief scenario, 4 options (1 correct), 
+      and explanations for each option. 
+      Ensure the content is appropriate, culturally sensitive, and accurate. 
+      Limit educational content to 150 words. 
+      Output in JSON format.
+`}],
   },
 });
 
 // Named export for the POST method
 export async function POST(req) {
   try {
-    // Parse the request body to get the prompt
-    const { prompt } = await req.json();
-
-    // Create the request for the Gemini model
+    const { userMessage } = await req.json();
     const request = {
-      contents: [{ role: 'user', parts: [{ text: prompt || 'How are you doing today?' }] }],
+      contents: [{ role: 'user', parts: [{ text: userMessage || 'How are you doing today?' }] }],
     };
 
     // Use the generateContentStream method to get the response in chunks
     const result = await generativeModel.generateContent(request);
     const response = result.response;
     console.log('Response: ', response);
-
+    const payload = response.candidates[0].content.parts[0].text;
+    const cleanPayload = payload.replace(/```json|```/g, '').trim();
     // Return the full response as JSON
     return NextResponse.json({
-      response: response,
+      response: JSON.parse(cleanPayload),
     });
   } catch (error) {
     console.error('Error with Gemini API call:', error);

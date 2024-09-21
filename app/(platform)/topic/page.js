@@ -24,179 +24,161 @@ export default function TopicPage() {
   const [progress, setProgress] = useState(0);
 
   const dummy_data = {
-    // title: "Understanding Balanced Diet",
-    slides: [
+    "questions": [
       {
-        content:
-          "A balanced diet includes a variety of foods from all food groups.",
+        "question": "You're at a friend's house and he offers you a cigarette. What should you do?",
+        "scenario": "You're hanging out with friends and one of them offers you a cigarette.",
+        "options": [
+          {
+            "text": "Take it and try it, it's just one cigarette.",
+            "isCorrect": false,
+            "explanation": "Starting to smoke, even once, can lead to addiction and health problems in the future."
+          },
+          {
+            "text": "Politely refuse and say you don't smoke.",
+            "isCorrect": true,
+            "explanation": "It's important to stand up for your health choices and say no to things that could harm you."
+          },
+          {
+            "text": "Tell him you don't like smoking but you'll try it this time.",
+            "isCorrect": false,
+            "explanation": "It's important to be consistent in your decisions about your health."
+          },
+          {
+            "text": "Tell him you're not allowed to smoke by your parents.",
+            "isCorrect": false,
+            "explanation": "While your parents' rules are important, it's also good to understand the reasons behind healthy choices."
+          }
+        ]
       },
       {
-        content:
-          "Aim for a colorful plate to ensure you're getting a range of nutrients.",
+        "question": "You're feeling stressed about exams. What is a healthy way to manage your stress?",
+        "scenario": "You're feeling really stressed about upcoming exams.",
+        "options": [
+          {
+            "text": "Stay up late studying, you need to get good grades.",
+            "isCorrect": false,
+            "explanation": "Lack of sleep can worsen stress and make it harder to concentrate."
+          },
+          {
+            "text": "Eat junk food for energy, it's faster than cooking.",
+            "isCorrect": false,
+            "explanation": "Unhealthy food choices can make you feel worse and contribute to stress."
+          },
+          {
+            "text": "Talk to a friend or family member about how you feel.",
+            "isCorrect": true,
+            "explanation": "Sharing your feelings can help reduce stress and you might get helpful advice."
+          },
+          {
+            "text": "Ignore the stress and focus on other things.",
+            "isCorrect": false,
+            "explanation": "Ignoring stress can make it worse in the long run. It's important to address it in a healthy way."
+          }
+        ]
       },
       {
-        content: "Portion control is key to maintaining a healthy diet.",
+        "question": "You're at a party and someone offers you alcohol. What should you do?",
+        "scenario": "You're at a party with friends and someone offers you a drink.",
+        "options": [
+          {
+            "text": "Take a small sip to be polite, it's just one drink.",
+            "isCorrect": false,
+            "explanation": "Drinking alcohol under the legal age is illegal and can be dangerous for your health."
+          },
+          {
+            "text": "Say you're not feeling well and you can't drink.",
+            "isCorrect": true,
+            "explanation": "It's okay to say no to things you don't want to do, even if it means politely declining."
+          },
+          {
+            "text": "Take a drink to fit in with your friends.",
+            "isCorrect": false,
+            "explanation": "You should make choices based on what's right for you, not to please others."
+          },
+          {
+            "text": "Ask someone else to take the drink for you.",
+            "isCorrect": false,
+            "explanation": "It's not okay to give alcohol to someone who is not legally allowed to drink."
+          }
+        ]
       },
       {
-        content:
-          "Stay hydrated! Water is an essential part of a balanced diet.",
+        "question": "Your friend is trying to convince you to skip school. What should you do?",
+        "scenario": "Your friend asks you to skip school with them.",
+        "options": [
+          {
+            "text": "Skip school, it's just one day.",
+            "isCorrect": false,
+            "explanation": "Skipping school can lead to falling behind in your studies and missing important lessons."
+          },
+          {
+            "text": "Tell your friend you can't skip school and explain why.",
+            "isCorrect": true,
+            "explanation": "It's important to stand up for your own choices and prioritize your education."
+          },
+          {
+            "text": "Tell your friend you'll skip school but only if they promise not to tell anyone.",
+            "isCorrect": false,
+            "explanation": "Skipping school is not a good decision and it's important to be honest with yourself and others."
+          },
+          {
+            "text": "Go to school but tell your friend you're going to be absent.",
+            "isCorrect": false,
+            "explanation": "This can lead to confusion and unnecessary worries for your friends and family."
+          }
+        ]
       },
+      {
+        "question": "You're feeling down and sad. What can you do to feel better?",
+        "scenario": "You're feeling sad and you don't know what to do about it.",
+        "options": [
+          {
+            "text": "Keep your feelings to yourself, it will pass eventually.",
+            "isCorrect": false,
+            "explanation": "It's important to talk to someone you trust when you're feeling down."
+          },
+          {
+            "text": "Spend time doing activities you enjoy, like playing sports or hanging out with friends.",
+            "isCorrect": true,
+            "explanation": "Engaging in positive activities can help improve your mood and make you feel better."
+          },
+          {
+            "text": "Use social media to vent your feelings, everyone else is doing it.",
+            "isCorrect": false,
+            "explanation": "Venting on social media might not be the best way to cope with sad feelings. It's better to talk to someone you trust."
+          },
+          {
+            "text": "Stay inside and avoid social contact, you don't want to burden anyone with your problems.",
+            "isCorrect": false,
+            "explanation": "It's important to connect with others and seek support when you're struggling."
+          }
+        ]
+      }
     ],
-    questions: [
+    "slides": [
       {
-        question: "What is the main cause of type 2 diabetes?",
-        scenario:
-          "Jean learns his older cousin was diagnosed with type 2 diabetes.",
-        options: [
-          {
-            text: "Eating too much sugar",
-            isCorrect: false,
-            explanation:
-              "While sugar can impact blood glucose, it is not the main cause of type 2 diabetes.",
-          },
-          {
-            text: "Not exercising enough",
-            isCorrect: false,
-            explanation:
-              "Lack of exercise is a risk factor but not the main cause of type 2 diabetes.",
-          },
-          {
-            text: "The body not using insulin well",
-            isCorrect: true,
-            explanation:
-              "Type 2 diabetes occurs when the body becomes resistant to insulin or doesn't make enough insulin.",
-          },
-          {
-            text: "Drinking too much coffee",
-            isCorrect: false,
-            explanation:
-              "Coffee consumption is not related to causing type 2 diabetes.",
-          },
-        ],
+        "content": "Taking care of your health is important at every age! It means making choices that keep your body and mind strong. Let's explore some important health tips."
       },
       {
-        question: "Which is NOT a common symptom of diabetes?",
-        scenario: "Jean wants to know how to recognize signs of diabetes.",
-        options: [
-          {
-            text: "Frequent urination",
-            isCorrect: false,
-            explanation:
-              "Frequent urination, especially at night, is a common diabetes symptom.",
-          },
-          {
-            text: "Increased thirst",
-            isCorrect: false,
-            explanation:
-              "Excessive thirst is a typical symptom of high blood sugar and diabetes.",
-          },
-          {
-            text: "Weight loss without trying",
-            isCorrect: false,
-            explanation: "Unexplained weight loss can be a sign of diabetes.",
-          },
-          {
-            text: "Improved vision",
-            isCorrect: true,
-            explanation:
-              "Blurred vision is common with diabetes, but vision does not typically improve.",
-          },
-        ],
+        "content": "**Eating Healthy:**  Choose fruits, vegetables, and whole grains most of the time.  Don't forget to drink plenty of water!  It's good for your energy and keeps you feeling your best."
       },
       {
-        question: "How often should people with diabetes check their feet?",
-        scenario:
-          "Jean learned diabetes can cause foot problems and wants to give his cousin advice.",
-        options: [
-          {
-            text: "Once a week",
-            isCorrect: false,
-            explanation:
-              "Checking feet daily is recommended to catch any problems early.",
-          },
-          {
-            text: "Every day",
-            isCorrect: true,
-            explanation:
-              "Daily foot checks help spot cuts, sores, blisters or other issues before they become serious.",
-          },
-          {
-            text: "Twice a month",
-            isCorrect: false,
-            explanation:
-              "Foot checks should be done more often than twice monthly to prevent complications.",
-          },
-          {
-            text: "Only before exercising",
-            isCorrect: false,
-            explanation:
-              "Feet should be examined daily, not just prior to exercise.",
-          },
-        ],
+        "content": "**Getting Active:**  Try to get at least 60 minutes of physical activity each day.  It could be playing sports, dancing, or even taking a walk with friends.  Staying active helps your body and your mind feel good."
       },
       {
-        question: "Which is most important for managing diabetes?",
-        scenario:
-          "Jean's cousin asks what lifestyle changes can help control his diabetes.",
-        options: [
-          {
-            text: "Regular exercise",
-            isCorrect: false,
-            explanation:
-              "While exercise is very beneficial, monitoring blood sugar is most critical.",
-          },
-          {
-            text: "Checking blood sugar levels",
-            isCorrect: true,
-            explanation:
-              "Monitoring glucose levels regularly is essential for adjusting medications, diet and activity.",
-          },
-          {
-            text: "Eating a low carb diet",
-            isCorrect: false,
-            explanation:
-              "A balanced diet is important, but carb counting is not the most crucial management tool.",
-          },
-          {
-            text: "Taking a multivitamin",
-            isCorrect: false,
-            explanation:
-              "Multivitamins do not play a significant role in day-to-day diabetes control.",
-          },
-        ],
+        "content": "**Sleeping Well:**  Getting enough sleep is really important.  Aim for 8-10 hours of sleep each night.  A good night's sleep helps you concentrate and focus better during the day."
       },
       {
-        question: "When should a person with diabetes see a doctor?",
-        scenario:
-          "Jean is unsure when his cousin needs medical attention for his diabetes.",
-        options: [
-          {
-            text: "Blood sugar stays high",
-            isCorrect: true,
-            explanation:
-              "Consistently elevated glucose can be dangerous and requires medical guidance.",
-          },
-          {
-            text: "Feeling tired sometimes",
-            isCorrect: false,
-            explanation:
-              "Occasional fatigue is common; severe tiredness should be discussed with a doctor.",
-          },
-          {
-            text: "Getting a minor scrape",
-            isCorrect: false,
-            explanation:
-              "Small cuts are not usually emergencies; large or slow-healing wounds need care.",
-          },
-          {
-            text: "Having an upset stomach",
-            isCorrect: false,
-            explanation:
-              "Stomach issues happen sometimes but aren't urgent unless blood sugars are impacted.",
-          },
-        ],
+        "content": "**Managing Stress:**  Life can be stressful, but there are healthy ways to cope. Talk to someone you trust, try relaxing activities, or listen to music.  Taking care of yourself helps you manage stress better."
       },
-    ],
+      {
+        "content": "**Making Healthy Choices:** It's important to make good choices for your health.  Say no to things that could harm you, like smoking, drinking alcohol, or using drugs.  Choose healthy activities and stay safe."
+      },
+      {
+        "content": "Remember, taking care of your health is your responsibility!  Make smart choices and stay healthy!"
+      }
+    ]
   };
 
   const onAnswerSelect = (answer) => {
@@ -209,8 +191,10 @@ export default function TopicPage() {
       setIsLoading(true);
       try {
         // const data = await callAnthropicAPI(topic);
-        // const jsonData = extractJson(data.message);
-        // setTopicData(jsonData);
+        // console.log(data);
+        // // const jsonData = extractJson(data.message);
+        // setTopicData(data.response);
+        // console.log(data.response)
         setTopicData(dummy_data);
         console.log("Done");
       } catch (error) {
@@ -233,7 +217,7 @@ export default function TopicPage() {
       location: "France",
     };
 
-    const response = await fetch("/api/anthropic", {
+    const response = await fetch("/api/gemini", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -364,7 +348,7 @@ slides:[
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-950 text-gray-100">
-      <Header title={topicData.title || topic} />
+      <Header title={topic} />
       <main className="flex-1 overflow-hidden">
         <div className="max-w-4xl mx-auto p-4 md:p-6 h-full flex flex-col">
           {isQuizMode ? (
