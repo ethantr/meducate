@@ -22,6 +22,8 @@ export default function TopicPage() {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [questionExplanation, setQuestionExplanation] = useState("");
   const [progress, setProgress] = useState(0);
+  const [isAnswerCorrect, setIsAnswerCorrect] = useState(null);
+
 
   const dummy_data = {
     "questions": [
@@ -304,39 +306,46 @@ slides:[
     if (currentSlide > 0) setCurrentSlide(currentSlide - 1);
   };
 
-  // Submit the quiz answer
   const handleSubmitQuiz = () => {
     if (selectedAnswer) {
       const currentQuestionData = topicData.questions[currentQuestion];
       const correctAnswer = currentQuestionData.options.find(
         (option) => option.isCorrect
       );
+  
+      // Check if the selected answer is correct
+      const isCorrect = selectedAnswer === correctAnswer.text;
+      console.log(isCorrect)
+      setIsAnswerCorrect(isCorrect);
+  
       const answerExplanation = currentQuestionData.options.find(
         (option) => selectedAnswer === option.text
       ).explanation;
-
-      if (selectedAnswer === correctAnswer.text) {
+  
+      if (isCorrect) {
         setProgress((prev) => Math.min(prev + 50, 100)); // Increment progress
-        setQuestionExplanation(answerExplanation)
+        setIsAnswerCorrect(true)
         setTimeout(() => {
-
           if (currentQuestion < topicData.questions.length - 1) {
             setCurrentQuestion(currentQuestion + 1);
-          }else {
+            setIsAnswerCorrect(null)
+          } else {
             confetti({ particleCount: 150, spread: 100, origin: { y: 0.5 } });
           }
           setSelectedAnswer(null);
-          setQuestionExplanation("")
+          setQuestionExplanation("");
           
         }, 2500);
+      } else {
+        setQuestionExplanation(answerExplanation);
+        setTimeout(() => {
+          setIsAnswerCorrect(null)
+        },2500)
         
-
-      } else{
-        setQuestionExplanation(answerExplanation)
-        console.log(answerExplanation)
       }
     }
   };
+  
 
   if (isLoading) {
     return (
@@ -359,6 +368,7 @@ slides:[
               onAnswerSelect={onAnswerSelect}
               onSubmitQuiz={handleSubmitQuiz}
               explanation={questionExplanation}
+              isAnswerCorrect={isAnswerCorrect}
             />
           ) : (
             <SlideMode
@@ -391,7 +401,8 @@ const QuizMode = ({
   selectedAnswer,
   onAnswerSelect,
   onSubmitQuiz,
-  explanation
+  explanation,
+  isAnswerCorrect
 }) => (
   <div className="flex flex-col items-center justify-center max-w-2xl mx-auto w-full">
     <Progress value={progress} className="w-full mb-8" />
@@ -400,20 +411,28 @@ const QuizMode = ({
         {question.question}
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        {question.options.map((answer) => (
-          <Button
-            key={answer.text}
-            variant={selectedAnswer === answer.text ? "default" : "outline"}
-            className={`h-16 text-lg ${
-              selectedAnswer === answer.text
-                ? "bg-blue-600 hover:bg-blue-700 text-white"
-                : "bg-gray-700 hover:bg-gray-600 text-gray-100 border-gray-600"
-            }`}
-            onClick={() => onAnswerSelect(answer.text)}
-          >
-            {answer.text}
-          </Button>
-        ))}
+      {question.options.map((answer) => {
+          let buttonStyle = "bg-gray-700 hover:bg-gray-600 text-gray-100 border-gray-600";
+
+          if (isAnswerCorrect === true && selectedAnswer === answer.text) {
+            buttonStyle = "bg-green-600 text-white"; // Correct answer
+          } else if (isAnswerCorrect === false && selectedAnswer === answer.text) {
+            buttonStyle = "bg-red-600 text-white"; // Incorrect answer
+          } else if (selectedAnswer === answer.text) {
+            buttonStyle = "bg-blue-600 hover:bg-blue-700 text-white"; // Selected answer
+          }
+
+          return (
+            <Button
+              key={answer.text}
+              variant="default"
+              className={`h-20 text-lg text-wrap ${buttonStyle}`}
+              onClick={() => onAnswerSelect(answer.text)}
+            >
+              {answer.text}
+            </Button>
+          );
+        })}
       </div>
       <Button
         className="w-full h-12 text-lg bg-green-600 hover:bg-green-700 text-white"
