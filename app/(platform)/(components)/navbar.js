@@ -1,10 +1,21 @@
-"use client"
-import { useState } from 'react'
-import { Button } from "@/components/ui/button"
-import { Progress } from "@/components/ui/progress"
-import { Input } from "@/components/ui/input"
-import { HeartPulse, Brain, Apple, Dna, Pill, Syringe, Activity, User, Search } from "lucide-react"
-import Link from "next/link"
+"use client";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
+import { Input } from "@/components/ui/input";
+import {
+  HeartPulse,
+  Brain,
+  Apple,
+  Dna,
+  Pill,
+  Syringe,
+  Activity,
+  User,
+  Search,
+  Trophy,
+} from "lucide-react";
+import Link from "next/link";
 const Navbar = () => {
   return (
     <>
@@ -16,6 +27,15 @@ const Navbar = () => {
           </span>
         </Link>
         <nav className="flex items-center gap-4 sm:gap-6">
+          <Link href ="/leaderboard">
+            <Button
+              variant="ghost"
+              className="text-gray-300 hover:text-gray-100"
+            >
+              <Trophy className="h-5 w-5 mr-2" />
+              Leaderboard
+            </Button>
+          </Link>
           <Button variant="ghost" className="text-gray-300 hover:text-gray-100">
             <Activity className="h-5 w-5 mr-2" />
             Daily Quest
@@ -29,4 +49,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar
+export default Navbar;

@@ -24,49 +24,76 @@ const categories = [
     name: "Basics",
     icon: HeartPulse,
     color: "text-red-500",
-    topics: ["Health 101", "Body Systems", "Medical Terms"],
+    topics: ["Health 101", "Understanding Health Literacy",
+    "How to Navigate Your Healthcare",
+    "Importance of Clear Communication",
+    "Identifying Reliable Information",
+    "Your Rights in Healthcare"],
   },
   {
     name: "Nutrition",
     icon: Apple,
     color: "text-green-500",
-    topics: ["Balanced Diet", "Vitamins & Minerals", "Food Labels"],
+    topics: ["Balanced Diet", "Vitamins & Minerals", "Food Labels","Reading Nutrition Labels",
+    "Understanding Portion Sizes",
+    "Healthy Eating on a Budget",
+    "Debunking Nutrition Myths",
+    "Meal Planning for Better Health"],
   },
   {
     name: "Mental Health",
     icon: Brain,
     color: "text-purple-500",
-    topics: ["Stress Management", "Emotional Wellness", "Sleep Hygiene"],
+    topics: ["Stress Management", "Emotional Wellness", "Sleep Hygiene","Recognising Signs of Stress and Anxiety",
+    "How to Talk About Mental Health",
+    "Coping Strategies for Everyday Life",
+    "The Importance of Mental Wellness",
+    "Resources for Mental Health Support"],
   },
   {
     name: "Fitness",
     icon: Activity,
     color: "text-blue-500",
-    topics: ["Exercise Basics", "Cardio vs. Strength", "Injury Prevention"],
+    topics: ["Exercise Basics", "Cardio vs. Strength", "Injury Prevention", "Setting Realistic Fitness Goals",
+    "Understanding Different Types of Exercise",
+    "The Role of Physical Activity in Health",
+    "How to Create a Sustainable Workout Plan",
+    "Overcoming Barriers to Exercise"],
   },
   {
     name: "Medications",
     icon: Pill,
     color: "text-yellow-500",
-    topics: ["Common Medications", "Side Effects", "Proper Usage"],
+    topics: ["Understanding Your Prescription",
+    "Side Effects: What to Expect",
+    "Questions to Ask Your Pharmacist",
+    "Managing Multiple Medications Safely","Common Medications", "Proper Usage"],
   },
   {
     name: "Preventive Care",
     icon: Stethoscope,
     color: "text-indigo-500",
-    topics: ["Screenings", "Vaccinations", "Health Checks"],
+    topics: ["The Importance of Regular Check-ups",
+    "Vaccinations: What You Need to Know",
+    "Understanding Screening",
+    "Monitor Your Health at Home",
+    "Recognising Symptoms that Need Attention","Treatment and Medical Procedures"],
   },
   {
     name: "First Aid",
     icon: Syringe,
     color: "text-orange-500",
-    topics: ["Emergency Response", "Wound Care", "CPR Basics"],
+    topics: ["Basic First Aid Everyone Should Know","Emergency Response", "Wound Care", "CPR Basics",,
+    "How to Respond in an Emergency",
+    "Common Injuries and How to Treat Them",
+    "The Importance of CPR Training",
+    "First Aid Kits: What to Include"]
   },
   {
     name: "Genetics",
     icon: Dna,
     color: "text-pink-500",
-    topics: ["Hereditary Conditions", "Genetic Testing", "Family History"],
+    topics: ["Hereditary Conditions", "Genetic Testing", "Family History and Health Risks", "Resources for Genetic Health Information"],
   },
 ];
 
@@ -78,9 +105,14 @@ export default function HomePage() {
 
     const searchParams = useSearchParams();
   
-    const handleLink = (topic) => {
+    const handleLink = (topic, category) => {
+      let categoryString = " - " +category
+      if(category == "Basics"){
+        categoryString = ""
+      }
+
       // Navigate to the new page with a query parameter
-      router.push(`/topic?topic=${encodeURIComponent(topic)}`)
+      router.push(`/topic?topic=${encodeURIComponent(topic+categoryString)}`)
     };
     
     useEffect(() => {
@@ -184,7 +216,7 @@ export default function HomePage() {
                         <Button
                           key={topicIndex}
                           variant="secondary"
-                          onClick={() => handleLink(topic)}
+                          onClick={() => handleLink(topic,category.name)}
                           className="w-full text-left justify-start py-2 px-3 bg-gray-800 hover:bg-gray-300 text-green-50 hover:text-green-950"
                         >
                           <category.icon
