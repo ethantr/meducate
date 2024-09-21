@@ -44,6 +44,8 @@ export default function TopicPage() {
 
   useEffect(() => {
     const callAPI = async () => {
+      const userCharacteristics = "male 50 years old white";
+      const topic = "diabetes";
       try {
         const response = await fetch('/api/anthropic', {
           method: 'POST',
@@ -51,7 +53,7 @@ export default function TopicPage() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            userMessage: 'Hello',
+            userMessage:`hi`
           }),
         });
   

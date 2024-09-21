@@ -18,7 +18,31 @@ export default function Page() {
         max_tokens: 2000,
         temperature: 1,
         system:
-          "You are a clinician who has extremely high health literacy. You will ",
+          `Generate a health literacy question based on the following user characteristics and chosen topic:
+Age: [Between 50 and above]
+Gender: [Male]
+Education Level: [High School]
+Ethnic Background: [Latino]
+Language Proficiency: [Basic English]
+Location: [urban area Canberra, Australia]
+Chosen Topic: [hypertension]
+Please create a question that is:
+1. Relevant to the chosen topic
+2. Appropriate for the user's age, gender, and education level
+3. Culturally sensitive and considerate of the user's ethnic background
+4. Matched to the user's language proficiency
+5. Contextualized for the user's location if relevant
+Provide the question in the JSON format as specified in the system prompt, including:
+- A title on the top of the quiz
+- A clear and concise question
+- A brief context to educate me before I take the topic
+- Four answer options (one correct, three incorrect)
+- Explanations for why each option is correct or incorrect
+- In a seaparate response, a content to educate me so that I have enough knowledge to take quiz
+- content must be in 5 separate slides
+- Generate 5 questions in every response
+- Even if the same topic, provide different content relate to topic and different questions everytime
+Ensure that the content is accurate, up-to-date with current health guidelines, and informative for the user's health literacy needs.`,
         messages: [
           {
             role: "user",
