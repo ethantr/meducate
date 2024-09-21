@@ -5,17 +5,20 @@ import { Button } from "@/components/ui/button";
 const questions = [
   {
     id: 1,
+    key: "age",
     question: "What is your age range?",
     options: ["Under 18", "18-24", "25-34", "35-44", "45+"],
   },
   {
     id: 2,
     question: "What is your gender?",
+    key: "gender",
     options: ["Male", "Female", "Non-binary", "Prefer not to say"],
   },
   {
     id: 3,
     question: "What is your highest education level?",
+    key: "degree",
     options: [
       "High School",
       "Associate's Degree",
@@ -26,31 +29,37 @@ const questions = [
   },
   {
     id: 4,
+    key: "background",
     question: "What is your ethnic background?",
     options: ["White", "Black or African American", "Asian", "Hispanic", "Other"],
   },
   {
     id: 5,
     question: "What is your native language?",
+    key: "language",
     options: ["English", "Spanish", "French", "Mandarin", "Other"],
   },
 ];
 
 export default function MultipleChoiceCard() {
+  const [userAnswer, setUserAnswer] = useState({});
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 
   const handleAnswer = (answer) => {
-    setSelectedAnswer(answer);
-    setAnswered(true);
-
-    // Move to the next question after a delay
-    setTimeout(() => {
-      setAnswered(false);
-      setSelectedAnswer(null);
-      setCurrentQuestion((prev) => (prev + 1) % questions.length); // Loop back after the last question
-    }, 1500); // 1.5 second delay to simulate flipping effect
+    setUserAnswer(prev => {
+      const curAns = {...prev};
+      curAns[questions[currentQuestion].key] = answer; 
+      if (currentQuestion == questions.length - 1) {
+        //TODO post user info
+        console.log(curAns);
+        return curAns;
+      }
+      console.log(currentQuestion);
+      setCurrentQuestion(prev => prev + 1);
+      return curAns;
+    })
   };
 
   return (
