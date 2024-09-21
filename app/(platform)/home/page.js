@@ -121,8 +121,8 @@ export default function HomePage() {
             <div className="w-1/3">
               <Progress
                 value={33}
-                className="h-3 bg-green-700"
-                indicatorClassName="bg-green-500"
+                className="h-3 bg-green-900"
+                
               />
             </div>
           </section>

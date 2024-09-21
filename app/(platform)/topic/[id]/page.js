@@ -79,27 +79,29 @@ export default function TopicPage() {
         <div className="max-w-4xl mx-auto p-4 md:p-6 h-full flex flex-col">
           <Progress 
             value={(currentSlide + 1) / topicData.slides.length * 100} 
-            className="w-full h-2 mb-4"
+            className="w-full h-2 mb-4 h-3 bg-green-900"
+            indicatorColour="bg-green-500"
           />
           <div className="flex-1 relative overflow-hidden rounded-lg bg-gray-900 shadow-xl">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentSlide}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
-                transition={{ duration: 0.3 }}
-                className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center"
-              >
-                <img 
-                  src={topicData.slides[currentSlide].image} 
-                  alt="Slide illustration" 
-                  className="w-64 h-64 object-cover rounded-lg mb-6 shadow-lg"
-                />
-                <p className="text-2xl font-bold mb-4">{topicData.slides[currentSlide].content}</p>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+  <AnimatePresence mode="wait">
+    <motion.div
+      key={currentSlide} // Ensure keying by slide number
+      initial={{ opacity: 0, x: 50 }} // Start animation properties
+      animate={{ opacity: 1, x: 0 }} // Animation on enter
+      exit={{ opacity: 0, x: -50 }} // Exit animation
+      transition={{ duration: 0.5 }} // Slightly slower for smooth transition
+      className="flex flex-col items-center justify-center p-6 text-center h-full"
+    >
+      <img 
+        src={topicData.slides[currentSlide].image} 
+        alt="Slide illustration" 
+        className="w-64 h-64 object-cover rounded-lg mb-6 shadow-lg"
+      />
+      <p className="text-2xl font-bold mb-4">{topicData.slides[currentSlide].content}</p>
+    </motion.div>
+  </AnimatePresence>
+</div>
+
           <div className="flex justify-between mt-6">
             <Button 
               onClick={prevSlide} 
