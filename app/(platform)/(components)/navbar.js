@@ -1,8 +1,9 @@
+"use client"
 import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { Input } from "@/components/ui/input"
-import { HeartPulse, Brain, Apple, Dna, Pill, Stethoscope, Syringe, Activity, User, Search } from "lucide-react"
+import { HeartPulse, Brain, Apple, Dna, Pill, Syringe, Activity, User, Search } from "lucide-react"
 import Link from "next/link"
 const Navbar = () => {
   return (

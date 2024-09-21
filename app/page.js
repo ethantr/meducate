@@ -27,6 +27,8 @@ export default function LandingPage() {
           <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
             Contact
           </Link>
+          <Link href="/login"><Button >Get Started</Button></Link>
+          
         </nav>
       </header>
       <main className="flex-1">
