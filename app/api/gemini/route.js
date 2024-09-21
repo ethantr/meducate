@@ -1,3 +1,16 @@
+export const getGCPCredentials = () => {
+  // for Vercel, use environment variables
+  return process.env.GCP_PRIVATE_KEY
+    ? {
+        credentials: {
+          client_email: process.env.GCP_SERVICE_ACCOUNT_EMAIL,
+          private_key: process.env.GCP_PRIVATE_KEY,
+        },
+        projectId: process.env.GCP_PROJECT_ID,
+      }
+      // for local development, use gcloud CLI
+    : {};
+};
 import { NextResponse } from 'next/server';
 const { VertexAI, HarmCategory, HarmBlockThreshold } = require('@google-cloud/vertexai');
 
@@ -8,6 +21,7 @@ const textModel = 'gemini-1.5-flash-001';
 const vertexAiOptions = {
   project: project,
   location: location,
+  googleAuthOptions: getGCPCredentials(),
 };
 const vertexAI = new VertexAI(vertexAiOptions);
 // Instantiate the Gemini model
