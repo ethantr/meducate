@@ -53,20 +53,37 @@ export default function MultipleChoiceCard() {
   // Get the username from the query parameter
   const username = searchParams.get("username");
 
-  const handleAnswer = (answer) => {
+  const handleAnswer = async (answer) => {
     setUserAnswer((prev) => {
       const curAns = { ...prev };
       curAns[questions[currentQuestion].key] = answer;
-      if (currentQuestion === questions.length - 1) {
-        // After the last question, redirect to /home with the username
-        setTimeout(() => {
-          router.push(`/home?username=${encodeURIComponent(username)}`);
-        }, 500); // Added delay to ensure router is available
-        return curAns;
-      }
-      setCurrentQuestion((prev) => prev + 1);
       return curAns;
     });
+
+    if (currentQuestion === questions.length - 1) {
+      // Send the POST request before navigating to /home
+      try {
+        const response = await fetch("https://9rufs2qkdg.execute-api.us-east-1.amazonaws.com/prod/insert-data", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({user_name: username, ...userAnswer }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to submit answers");
+        }
+
+        // Navigate to /home once the POST request is successful
+        router.push(`/home?username=${encodeURIComponent(username)}`);
+      } catch (error) {
+        console.error("Error submitting answers:", error);
+      }
+    } else {
+      // Move to the next question
+      setCurrentQuestion((prev) => prev + 1);
+    }
   };
 
   return (
