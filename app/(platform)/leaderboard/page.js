@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Search, Trophy, Zap, Brain } from "lucide-react";
+import { Search, Trophy, Zap, Brain,Award } from "lucide-react";
 
 // Mock data for demonstration
 const mockUsers = [
@@ -84,8 +84,8 @@ function LeaderboardContent({ users, searchQuery, setSearchQuery }) {
               <div>
                 <h3 className="font-semibold">{user.username}</h3>
                 <div className="flex items-center space-x-2 text-sm text-gray-400">
-                  <Trophy className="h-4 w-4" />
-                  <span>{user.score} pts</span>
+                  <Award className="h-4 w-4" />
+                  <span>{user.score}</span>
                   <Zap className="h-4 w-4 ml-2" />
                   <span>{user.streak} day streak</span>
                 </div>
@@ -93,7 +93,7 @@ function LeaderboardContent({ users, searchQuery, setSearchQuery }) {
             </div>
             <div className="flex items-center space-x-2">
               <Brain className="h-5 w-5 text-green-500" />
-              <span className="font-semibold">{user.knowledgeScore}% Knowledge</span>
+              <span className="font-semibold">{user.knowledgeScore}pts</span>
             </div>
           </div>
         ))}

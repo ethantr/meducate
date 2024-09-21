@@ -34,20 +34,18 @@ const categories = [
     name: "Nutrition",
     icon: Apple,
     color: "text-green-500",
-    topics: ["Balanced Diet", "Vitamins & Minerals", "Food Labels","Reading Nutrition Labels",
-    "Understanding Portion Sizes",
+    topics: ["Balanced Diet", "Vitamins & Minerals", "Food Labels",
     "Healthy Eating on a Budget",
     "Debunking Nutrition Myths",
-    "Meal Planning for Better Health"],
+    "Meal Planning"],
   },
   {
     name: "Mental Health",
     icon: Brain,
     color: "text-purple-500",
-    topics: ["Stress Management", "Emotional Wellness", "Sleep Hygiene","Recognising Signs of Stress and Anxiety",
+    topics: ["Emotional Wellness","Signs of Stress and Anxiety",
     "How to Talk About Mental Health",
     "Coping Strategies for Everyday Life",
-    "The Importance of Mental Wellness",
     "Resources for Mental Health Support"],
   },
   {
@@ -156,6 +154,7 @@ export default function HomePage() {
               <p className="text-gray-400">Keep going! You're doing great!</p>
             </div>
             <div className="w-1/3">
+            <div className="text-gray-400">60 until next level</div>
               <Progress
                 value={33}
                 className="h-3 bg-green-900"
