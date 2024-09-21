@@ -30,7 +30,7 @@ export default function LandingPage() {
         </nav>
       </header>
       <main className="flex-1">
-      <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
+      <section className="w-full py-8 md:py-12 lg:py-14 xl:py-16">
   <div className="container mx-auto px-4 md:px-6">
     <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
       <div className="md:w-1/2 space-y-2 text-center md:text-left">
@@ -50,8 +50,8 @@ export default function LandingPage() {
       />
     </div>
     <div className="space-x-4 mt-4">
-      <Button className="bg-green-500 text-gray-950 hover:bg-green-600">Get Started for Free</Button>
-      <Button variant="outline" className="border-green-500 text-green-500 hover:bg-green-950">
+      <Button className="bg-green-500 text-gray-950 hover:bg-green-600 text-lg">Get Started for Free</Button>
+      <Button variant="outline" className="border-green-500 text-green-500 hover:bg-green-950 text-lg">
         Learn More
       </Button>
     </div>
