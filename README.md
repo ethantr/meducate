@@ -1,36 +1,19 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Meducare
 
-## Getting Started
+Meducare is an AI-powered healthcare education app designed to improve health literacy through personalised lessons and interactive quizzes. Developed as a part of a 24-hour hackathon, Meducare provides a gamified experience that makes learning about healthcare engaging and accessible.
 
-First, run the development server:
+## Features
+- Personalised Learning: Users receive tailored lessons based on their progress and understanding of health literacy topics.
+- Interactive Quizzes: Engaging quizzes reinforce learning and provide immediate feedback to users.
+- Gamified Experience: By integrating elements of gamification, users are encouraged to stay engaged with the content, making health education more fun.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Tech Stack
+- Frontend: Built with Next.js, providing a fast, scalable, and efficient user interface.
+- Backend: Powered by AWS services for the backend infrastructure and database (only operational during the hackathon).
+- AI Models: Leveraged models like Claude and Google Gemini to generate personalised content (not currently active but used during development).
+- 
+## Development Notes
+This project was put together during a 24-hour hackathon, so you’ll definitely notice the classic "throw everything together and hope it works" approach. The code’s a bit chaotic (hackathon fashion!), but we got a working MVP by the end.
+What's Working: The frontend is built in Next.js, and we used AWS for the backend and database (which only ran during the hackathon). We also integrated Claude and Google Gemini for AI-generated content – but heads up, the AI models aren’t currently live.
+Right now, the backend and AI stuff aren’t active, but we’ve got plans to bring Meducare back one day when things are less hectic.
+Shoutout to @TaiHaDev, @naychithanshwe, and EntroSanity – lot of Red Bulls and not a lot of sleep got us through this one!
